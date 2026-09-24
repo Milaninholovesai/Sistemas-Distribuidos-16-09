@@ -1,0 +1,18 @@
+PS C:\Users\aluno\Desktop\Calculadora> "C:\Program Files\Python313\python.exe" c:/Users/aluno/Desktop/Calculadora/cliente_rpc.py
+10+5= 15
+10-5= 5
+10*5= 50
+PS C:\Users\aluno\Desktop\Calculadora> []
+
+PS C:\Users\aluno\Desktop\Calculadora> python cliente_rpc.py
+Digite o primeiro valor: 10
+Digite o segundo valor: 5
+1 - Soma
+2 - Subtração
+3 - Multiplicar
+4 - Dividir
+Escolher: 1
+Resultado: 15
+
+
+Mostra o cliente conectando no servidor e fazendo operações matemáticas com sucesso!
