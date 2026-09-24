@@ -1,3 +1,32 @@
+from xmlrpc.server import SimpleXMLRPCServer
+import xmlrpc.client
+
+# Servidor
+server = SimpleXMLRPCServer(("0.0.0.0", 8000), allow_none=True)
+
+def soma(a, b):
+    return a + b
+
+def subtracao(a, b):
+    return a - b
+
+def multiplicacao(a, b):
+    return a * b
+
+def divisao(a, b):
+    if b == 0:
+        return "Erro: divisão por zero"
+    return a / b
+
+server.register_function(soma, "soma")
+server.register_function(subtracao, "subtracao")
+server.register_function(multiplicacao, "multiplicacao")
+server.register_function(divisao, "divisao")
+
+print("Servidor XML-RPC rodando em http://localhost:8000")
+server.serve_forever()
+
+
 a = float(input("Digite o primeiro valor: "))
 
 b = float(input("Digite o segundo valor: "))
