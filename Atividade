@@ -1,0 +1,5 @@
+PS C:\Users\aluno\Desktop\Desafio\aula> python servidor_rpc.py
+Servidor XML-RPC rodando em http://localhost:8000
+127.0.0.1 - - [16/Sep/2025 21:57:38] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2025 21:57:38] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2025 21:57:38] "POST / HTTP/1.1" 200 -
