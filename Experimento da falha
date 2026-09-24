@@ -1,0 +1,16 @@
+- 1. Feche o servidor com Ctrl + C.
+
+- 2. Sem reiniciá-lo, execute novamente cliente_rpc.py.
+
+- 3. Observe o erro apresentado.
+
+- 4. Explique por que uma chamada que parecia uma simples função deixou de funcionar.
+
+- 5. Relacione o resultado com disponibilidade e dependência da rede.
+
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pde ser feita porque a máquina de destino as recusou ativamente
+
+Isso acontece porque:
+- O cliente tenta conectar no servidor em `http://localhost:8000`
+- O servidor não tá respondendo (foi fechado)
+- Windows retorna o erro 10061 (Connection Refused)
