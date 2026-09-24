@@ -1,0 +1,57 @@
+No servidor : 
+def potencia(a, b):
+    return a ** b
+
+# E registra:
+server.register_function(potencia, "potencia")
+
+Código completo do servidor com a nova operação:
+
+from xmlrpc.server import SimpleXMLRPCServer
+import xmlrpc.client
+
+server = SimpleXMLRPCServer(("0.0.0.0", 8000), allow_none=True)
+
+def soma(a, b):
+    return a + b
+
+def subtracao(a, b):
+    return a - b
+
+def multiplicacao(a, b):
+    return a * b
+
+def divisao(a, b):
+    if b == 0:
+        return "Erro: divisão por zero"
+    return a / b
+
+def potencia(a, b):
+    return a ** b
+
+server.register_function(soma, "soma")
+server.register_function(subtracao, "subtracao")
+server.register_function(multiplicacao, "multiplicacao")
+server.register_function(divisao, "divisao")
+server.register_function(potencia, "potencia")
+
+print("Servidor XML-RPC rodando em http://localhost:8000")
+server.serve_forever()
+
+NO CLIENTE (cliente_interativo.py):
+
+Adiciona na lista de operações:
+
+python
+print("5 - Potência")
+
+# E no elif:
+elif opcao == "5":
+    resultado = servidor.potencia(a, b)
+    print(f"Resultado: {a} ^ {b} = {resultado}")
+
+Exemplo de uso:
+
+python
+print("2 ^ 3 =", servidor.potencia(2, 3))  # Resultado: 8
+print("5 ^ 2 =", servidor.potencia(5, 2))  # Resultado: 25
