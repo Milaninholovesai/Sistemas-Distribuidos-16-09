@@ -1,48 +1,37 @@
-from xmlrpc.server import SimpleXMLRPCServer
 import xmlrpc.client
 
-# Servidor
-server = SimpleXMLRPCServer(("0.0.0.0", 8000), allow_none=True)
+# Cliente conectando ao servidor
+servidor = xmlrpc.client.ServerProxy("http://localhost:8000")
 
-def soma(a, b):
-    return a + b
-
-def subtracao(a, b):
-    return a - b
-
-def multiplicacao(a, b):
-    return a * b
-
-def divisao(a, b):
-    if b == 0:
-        return "Erro: divisão por zero"
-    return a / b
-
-server.register_function(soma, "soma")
-server.register_function(subtracao, "subtracao")
-server.register_function(multiplicacao, "multiplicacao")
-server.register_function(divisao, "divisao")
-
-print("Servidor XML-RPC rodando em http://localhost:8000")
-server.serve_forever()
-
-
-a = float(input("Digite o primeiro valor: "))
-
-b = float(input("Digite o segundo valor: "))
-
-print("1 - Soma")
-print("2 - Subtração")
-print("3 - Multiplicar")
-print("4 - Dividir")
-
-opcao = input("Escolher ")
-
-if opcao == "1":
-    print("Resultado:", servidor.soma(a, b))
-elif opcao == "2":
-    print("Resultado:", servidor.subtracao(a, b))
-elif opcao == "3":
-    print("Resultado:", servidor.multiplicacao(a, b))
-elif opcao == "4":
-    print("Resultado:", servidor.divisao(a, b))
+while True:
+    print("\n=== Calculadora Distribuída ===")
+    
+    a = float(input("Digite o primeiro valor: "))
+    b = float(input("Digite o segundo valor: "))
+    
+    print("\n1 - Soma")
+    print("2 - Subtração")
+    print("3 - Multiplicar")
+    print("4 - Dividir")
+    
+    opcao = input("\nEscolha uma operação (1-4): ")
+    
+    if opcao == "1":
+        resultado = servidor.soma(a, b)
+        print(f"Resultado: {a} + {b} = {resultado}")
+    elif opcao == "2":
+        resultado = servidor.subtracao(a, b)
+        print(f"Resultado: {a} - {b} = {resultado}")
+    elif opcao == "3":
+        resultado = servidor.multiplicacao(a, b)
+        print(f"Resultado: {a} * {b} = {resultado}")
+    elif opcao == "4":
+        resultado = servidor.divisao(a, b)
+        print(f"Resultado: {a} / {b} = {resultado}")
+    else:
+        print("Opção inválida!")
+    
+    continuar = input("\nDeseja fazer outra operação? (s/n): ")
+    if continuar.lower() != "s":
+        print("Até logo!")
+        break
